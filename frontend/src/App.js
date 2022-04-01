@@ -23,26 +23,32 @@ function App() {
 
   return (
     <>
-      <div id="wrapper">
-        <div id="menu">
-          <p className="welcome">Welcome to the WhatsApp</p>
-          <p className="logout"><a id="exit" href="http://localhost:8000/exit">Exit Chat</a></p>
+      <div id="wrapper" class="container">
+        <div id="menu" >
+          <h4 className="welcome">Welcome To The Chat Application!</h4>
+          
+          <button type="button" class="btn btn-danger">Exit Chat</button>
+
+          {/* <p className="logout"><a id="exit" href="http://localhost:8000/exit">Exit Chat</a></p> */}
         </div>
-        <div id="chatbox">
+        <div id="chatbox" class="modal-content" >
           {chat.map((payload, index) => {
             return (
-              <h3 key={index}>{payload.userName} : <span>{payload.message}</span></h3>
+              <li class="list-group-item" key={index}>{payload.userName} {payload.message}</li>
+              // <h3 key={index}>{payload.userName} : <span>{payload.message}</span></h3>
             )
           })}
-        </div>
+        </div>  
         <form onSubmit={sendMessage}>
-          <input name="usermsg"
+          <input  class="form-control" name="usermsg"
             type="text"
             placeholder="Type a Message"
             value={message}
             onChange={(e) => setmessage(e.target.value)}
             required />
-          <button name="submitmsg" type="submit" id="submitmsg">Send</button>
+          {/* <button name="submitmsg" type="submit" id="submitmsg">Send</button> */}
+          <button type="button" class="btn btn-primary">Send</button>
+
         </form>
       </div>
     </>
